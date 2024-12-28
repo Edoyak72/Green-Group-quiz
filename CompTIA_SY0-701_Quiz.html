@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompTIA Security+ (SY0-701) Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answers {
+            margin-left: 20px;
+        }
+        .answers input {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CompTIA Security+ (SY0-701) Quiz</h1>
+    <form id="quizForm">
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Which of the following threat actors is most likely hired by a foreign government to attack critical systems?</p>
+            <div class="answers">
+                <label><input type="checkbox" name="q1" value="A"> Hacktivist</label><br>
+                <label><input type="checkbox" name="q1" value="B"> Whistleblower</label><br>
+                <label><input type="checkbox" name="q1" value="C"> Organized crime</label><br>
+                <label><input type="checkbox" name="q1" value="D"> Unskilled attacker</label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. What is used to add complexity before applying a one-way data transformation algorithm?</p>
+            <div class="answers">
+                <label><input type="checkbox" name="q2" value="A"> Key stretching</label><br>
+                <label><input type="checkbox" name="q2" value="B"> Data masking</label><br>
+                <label><input type="checkbox" name="q2" value="C"> Steganography</label><br>
+                <label><input type="checkbox" name="q2" value="D"> Salting</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="gradeQuiz()">Submit</button>
+    </form>
+
+    <div id="results" style="margin-top: 20px;"></div>
+
+    <script>
+        function gradeQuiz() {
+            const answers = {
+                q1: "C",
+                q2: "D"
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === correctAnswer) {
+                    score++;
+                }
+            }
+
+            document.getElementById("results").innerHTML = `<h2>Your Score: ${score}/${total}</h2>`;
+        }
+    </script>
+</body>
+</html>
